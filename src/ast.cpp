@@ -64,8 +64,9 @@ void AST::AddFunction(Symbol *sym, Stmt *code) {
 
 void AST::GenerateIR() {
     llvm::TimeTraceScope TimeScope("GenerateIR");
-    for (unsigned int i = 0; i < functions.size(); ++i)
-        functions[i]->GenerateIR();
+    int fs = functions.size();
+    for (unsigned int i = 0; i < fs; ++i)
+        functions[fs - i - 1]->GenerateIR();
 }
 
 ///////////////////////////////////////////////////////////////////////////
